@@ -30,8 +30,6 @@ class beforeSaveInboundEmails
             // and if this is not a subsequent update of the reply_to_status field due to a user replying to an email
             // and if the parent_id is in the process of changing, trigger the rest of the logic
 
-            $GLOBALS['log']->fatal(__METHOD__  . ' triggered hook with parent id ' . $bean->parent_id);
-
             if ($bean->type === 'inbound' && !empty($bean->mailbox_id)
                 && !empty($bean->parent_type) && $bean->parent_type === 'Cases' && !empty($bean->parent_id)
                 && $bean->fetched_row['parent_id'] !== $bean->parent_id) {
